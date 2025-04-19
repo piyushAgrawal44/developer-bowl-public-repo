@@ -1,0 +1,185 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: white;
+    --foreground: black;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: var(--font-poppins), sans-serif;
+  box-sizing: border-box
+}
+
+
+.underline-custom {
+  @apply relative inline-block;
+}
+
+.underline-custom::after {
+  content: '';
+  @apply absolute left-0 bottom-0 w-full h-[3px] bg-blue-400 rounded-full scale-110 -rotate-3 skew-x-3 opacity-90;
+}
+
+.underline-custom::before {
+  content: '';
+  @apply absolute left-0 bottom-[2px] w-full h-[3px] bg-blue-300 rounded-full scale-105 rotate-0 -skew-x-3 opacity-90;
+}
+
+
+.bowl-icon-small-top {
+  @apply relative;
+  overflow: hidden;
+}
+
+.bowl-icon-small-top::before {
+  content: "";
+  position: absolute;
+  right: 25px;
+  top: -24px;
+  background-color: white;
+  width: 50px;
+  height: 50px;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  z-index: 10;
+}
+
+.bowl-icon-small-top::after {
+  content: "";
+  position: absolute;
+  right: 41px;
+  top: 28px;
+  background-color: white;
+  width: 20px;
+  height: 3px;
+  border-radius: 0.375rem;
+  z-index: 10;
+}
+
+.blue-bowl-icon-small-top {
+  @apply relative;
+  overflow: hidden;
+}
+
+.blue-bowl-icon-small-top::before {
+  content: "";
+  position: absolute;
+  right: 25px;
+  top: -24px;
+  background-color: #155dfc;
+  width: 50px;
+  height: 50px;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  z-index: 10;
+}
+
+.blue-bowl-icon-small-top::after {
+  content: "";
+  position: absolute;
+  right: 41px;
+  top: 28px;
+  background-color: #155dfc;
+  width: 20px;
+  height: 3px;
+  border-radius: 0.375rem;
+  z-index: 10;
+}
+.white-bowl-icon-small-top {
+  @apply relative;
+  overflow: hidden;
+}
+
+.white-bowl-icon-small-top::before {
+  content: "";
+  position: absolute;
+  right: 25px;
+  top: -24px;
+  background-color: white;
+  width: 50px;
+  height: 50px;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  z-index: 10;
+}
+
+.white-bowl-icon-small-top::after {
+  content: "";
+  position: absolute;
+  right: 41px;
+  top: 28px;
+  background-color: white;
+  width: 20px;
+  height: 3px;
+  border-radius: 0.375rem;
+  z-index: 10;
+}
+
+
+button, a {
+  cursor: pointer;
+}
+
+
+
+@property --angle{
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.border-glowing-animation::after, .border-glowing-animation::before{
+  content: '';
+  box-sizing: border-box;
+  position: absolute;
+  height: calc(100% + 10px); /* Add padding effect */
+  min-width: calc(100% + 10px);
+  background-image: conic-gradient(from var(--angle),  #0d00ff,#00bbe7, #008dff, #0d00ff);
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  z-index: -1;
+  animation: spin-xyz 2s linear infinite;
+  @apply rounded-lg;
+}
+.border-glowing-animation::before{
+  filter: blur(0.6rem);
+  opacity: 0.80;
+}
+@keyframes spin-xyz{
+  from{
+    --angle: 0deg;
+  }
+  to{
+    --angle: 360deg;
+  }
+}
+
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fade-in-up {
+  animation: fade-in-up 0.3s ease-out;
+}
